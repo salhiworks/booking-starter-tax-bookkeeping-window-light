@@ -1,0 +1,8 @@
+/*
+ * The packaged dashboard keeps its own design. The site brands it with one
+ * thing — its accent, per appearance (INTEGRATION.md §10). Window Light's accent
+ * is low sun, a light apricot carrying dark text, in both modes. Owner monogram,
+ * primary buttons, Confirm, focus rings, selection and the schedule's "now" line follow it.
+ */
+:root .pbe-admin[data-mode='light'] { --pbe-accent: #f2b27a; --pbe-accent-text: #1b1612; } /* ink on low sun ≈10:1 */
+:root .pbe-admin[data-mode='dark']  { --pbe-accent: #f2b27a; --pbe-accent-text: #1b1612; }
