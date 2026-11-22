@@ -26,11 +26,14 @@ const whereNote = (answer: string) => `Where things stand: “${answer.trim()}�
  * Home, End); choosing one lights it. Beside them, on a dark card crossed by a shaft of light, the
  * appointment that answers it (`serviceFor`: the owner names it)
  * with its LIVE length and fee, why, what you'd go through, and Book — which writes the visitor's line
- * into the booking note. An answer whose appointment isn't offered shows the words without a Book
- * button. Nothing here promises an outcome.
+ * into the booking note. Once the services are loaded, an answer whose appointment isn't offered
+ * (renamed or removed in the dashboard) is left out — never shown under a name that no longer exists —
+ * and without any, the section is hidden. Nothing here promises an outcome.
  */
 export function Where({ values, ownerFields, services, business, onBook }: WhereProps) {
-  const answers = values['where.answers'];
+  const list = services.status === 'ready' ? services.data : [];
+  const answers =
+    services.status === 'ready' ? values['where.answers'].filter((a) => serviceFor(list, a.service) !== null) : values['where.answers'];
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const id = useId();
@@ -38,7 +41,6 @@ export function Where({ values, ownerFields, services, business, onBook }: Where
   if (answers.length === 0) return null;
   const index = Math.min(active, answers.length - 1);
   const item = answers[index];
-  const list = services.status === 'ready' ? services.data : [];
   const service = serviceFor(list, item.service);
   const locale = business?.locale ?? 'en-US';
   const covers = item.covers
