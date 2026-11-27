@@ -7,7 +7,7 @@ bookkeeping consultation, a monthly books review, a tax preparation consultation
 planning discussion and a financial records organization session — one client and one service per
 appointment, at one fixed office address) for the owner to make their own. Its identity lives in
 `src/site.config.ts`; `CUSTOMIZE.md` is the prompt that personalizes it. Built around
-**@profitstudio/booking-engine** **2.0.0** (pinned; lock in `booking-engine.lock.json`). The
+**@profitstudio/booking-engine** **2.0.1** (pinned; lock in `booking-engine.lock.json`). The
 engine owns booking; this project owns the public design.
 
 Read before changing anything:
